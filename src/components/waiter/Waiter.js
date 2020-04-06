@@ -1,87 +1,10 @@
 import React from 'react';
 import { getProducts, getOffers, addOrder } from '../../firebase/firestore';
-import Menu from './Menu';
-import RegisterOrder from './RegisterOrder';
-import ModalOrder from './ModalOrder';
-
-
-const createOrder = (product, offer, state) => {
-
-  if (offer !== null) {
-    const findProductOffer = state.find((element) => element.id === (product.id + offer.id));
-
-    if (findProductOffer) {
-      const mapProducts = state.map((order) => {
-        const editedOrder = order;
-
-        if (order.id === (product.id + offer.id)) {
-          const counter = editedOrder.quantity += 1;
-
-          editedOrder.subTotal = counter * order.price;
-        }
-
-        editedOrder.subTotal = order.quantity * order.price;
-
-        return editedOrder;
-      });
-
-      return mapProducts;
-    }
-
-    const newOrder = {
-      id: product.id + offer.id,
-      nameProduct: product.nameProduct + ' + ' + offer.nameOffer,
-      price: product.price + offer.price,
-      quantity: 1,
-      subTotal: product.price + offer.price,
-    }
-
-    const arrayOrder = state.concat(newOrder);
-
-    return arrayOrder;
-  }
-
-  const findProduct = state.find((element) => element.id === product.id);
-
-  if (findProduct) {
-
-    const mapProducts = state.map((order) => {
-      const editedOrder = order;
-
-      if (order.id === product.id) {
-        const counter = editedOrder.quantity += 1;
-
-        editedOrder.subTotal = counter * order.price;
-      }
-
-      editedOrder.subTotal = order.quantity * order.price;
-
-      return order;
-    });
-
-    return mapProducts;
-  }
-
-  const newOrder = {
-    id: product.id,
-    nameProduct: product.nameProduct,
-    price: product.price,
-    quantity: 1,
-    subTotal: product.price,
-  }
-
-  const arrayOrder = state.concat(newOrder);
-
-  return arrayOrder;
-}
-
-const totalPay = (orders) => {
-  let totalPay = 0;
-
-  orders.forEach((order => totalPay += order.subTotal));
-
-  return totalPay;
-}
+import createOrder from './order/functions/createOrder';
+import totalPay from './order/functions/totalPay';
+import Menu from './menu/Menu';
+import RegisterOrder from './order/RegisterOrder';
+import ModalOrder from './order/ModalOrder';
 
 
 class Waiter extends React.Component {
@@ -238,16 +161,20 @@ class Waiter extends React.Component {
       state: false,
     }
 
-    addOrder(orderData)
-      .then((e) => {
-        console.log('Hola Lilian', e);
-      })
-      .catch((error) => {
-        console.log('Ayudanos Fares', error);
-      });
+    if(!this.state.client){
+      alert('Por favor registre el nombre del cliente.')
+    }
+    else {
+      addOrder(orderData)
+        .then(() => alert('Orden añadida.'))
+        .catch(() => alert('Error al registrar la orden.'));
 
-    console.log('hola Yamira');
-
+      this.setState({ show: false });
+      this.setState({ client: '' });
+      this.setState({ table: 1 });
+      this.setState({ orders: [] });
+      this.setState({ total: 0 });
+    }
   }
 
   render() {

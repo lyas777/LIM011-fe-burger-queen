@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Waiter from './components/waiter/Waiter';
 
+
 function App() {
   return(
     <div data-testid = 'app'>
@@ -10,5 +11,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

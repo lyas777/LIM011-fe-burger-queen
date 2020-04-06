@@ -19,6 +19,7 @@ export const getProducts = (category) => {
     })
 };
 
+
 export const getOffers = (category) => {
   return db.collection('offers').where('category', '==', category).get()
     .then((response) => {
@@ -37,28 +38,5 @@ export const getOffers = (category) => {
     })
 };
 
+
 export const addOrder = objectOrder => db.collection('pruebaOrder').add(objectOrder);
-
-// export const addNoteOnSubmit = (event) => {
-//   event.preventDefault();
-
-//   const inputPost = document.getElementById('input-new-note');
-//   const userRed = user();
-//   const dataPost = {
-//     idUser: userRed.uid,
-//     note: inputPost.value,
-//     name: userRed.displayName !== null ? userRed.displayName : window.newUser,
-//     photo: userRed.photoURL,
-//     date: new Date(),
-//   };
-
-//   addNote(dataPost)
-//     .then(() => {
-//       inputPost.value = '';
-//       console.log('Nota agregada.');
-//     }).catch(() => {
-//       inputPost.value = '';
-//       console.log('Error.');
-//     });
-// };
-

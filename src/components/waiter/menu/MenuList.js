@@ -10,19 +10,19 @@ const MenuList = (props) => {
   const productOffer = props.productOffer;
   const clickOffer = props.clickOffer;
 
-  const listOrder = products.map((order) =>
-  <ItemMenu key = { order.id } value = { order } clickProduct = { clickProduct }/>
-  );
-
   return (
     <div>
       <div>
         <ul id="item-list">
-          {listOrder}
+          {
+            (products) && products.map((order) =>
+              <ItemMenu key = { order.id } value = { order } clickProduct = { clickProduct }/>
+            )
+          }
         </ul>
       </div>
         {
-          (offers.length > 0) && <OfferList offers = { offers } clickOffer = { clickOffer } productOffer = { productOffer }/>
+          (offers) && <OfferList offers = { offers } clickOffer = { clickOffer } productOffer = { productOffer }/>
         }
     </div>
   );

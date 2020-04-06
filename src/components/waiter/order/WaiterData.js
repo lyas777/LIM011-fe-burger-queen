@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class WaiterData extends React.Component {
 
   render(){
@@ -9,5 +10,6 @@ class WaiterData extends React.Component {
   }
 
 }
+
 
 export default WaiterData;
