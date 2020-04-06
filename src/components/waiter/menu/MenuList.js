@@ -22,7 +22,7 @@ const MenuList = (props) => {
         </ul>
       </div>
         {
-          (offers) && <OfferList offers = { offers } clickOffer = { clickOffer } productOffer = { productOffer }/>
+          (offers.length > 0) && <OfferList offers = { offers } clickOffer = { clickOffer } productOffer = { productOffer }/>
         }
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getProducts, getOffers, addOrder } from '../../firebase/firestore';
 import createOrder from './order/functions/createOrder';
-import totalPay from './order/functions/totalPay';
+import totalPay from './order/functions//totalPay';
 import Menu from './menu/Menu';
 import RegisterOrder from './order/RegisterOrder';
 import ModalOrder from './order/ModalOrder';
@@ -160,20 +160,12 @@ class Waiter extends React.Component {
       totalPay: this.state.total,
       state: false,
     }
-
     if(!this.state.client){
-      alert('Por favor registre el nombre del cliente.')
+      alert('No se ha registrado nombre del cliente')
     }
     else {
-      addOrder(orderData)
-        .then(() => alert('Orden añadida.'))
-        .catch(() => alert('Error al registrar la orden.'));
-
+      addOrder(orderData);
       this.setState({ show: false });
-      this.setState({ client: '' });
-      this.setState({ table: 1 });
-      this.setState({ orders: [] });
-      this.setState({ total: 0 });
     }
   }
 
