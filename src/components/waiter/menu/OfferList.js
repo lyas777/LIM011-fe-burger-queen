@@ -14,10 +14,10 @@ const OfferList = (props) => {
   return (
     <div>
       <h3>Oferta</h3>
-      <ul id="item-list">
+      <ul data-testid="item-list">
         {listOffers}
         <li>
-          <button className="btn btn-outline-dark" onClick={ () => props.clickOffer(props.productOffer, null) }>Ninguno</button>
+          <button data-testid="button" className="btn btn-outline-dark" onClick={ () => props.clickOffer(props.productOffer, null) }>Ninguno</button>
         </li>
       </ul>
     </div>

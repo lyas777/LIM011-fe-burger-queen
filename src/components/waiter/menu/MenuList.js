@@ -13,7 +13,7 @@ const MenuList = (props) => {
   return (
     <div>
       <div>
-        <ul id="item-list">
+        <ul data-testid="item-list">
           {
             (products) && products.map((order) =>
               <ItemMenu key = { order.id } value = { order } clickProduct = { clickProduct }/>

@@ -1,4 +1,4 @@
-const offers = {
+export const offers = {
   __collection__: {
     offers: {
       __doc__: {

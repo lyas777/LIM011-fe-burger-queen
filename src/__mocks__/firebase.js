@@ -9,7 +9,7 @@ const mockfirestore = new firebasemock.MockFirestore();
 mockfirestore.autoFlush();
 // mockauth.autoFlush();
 
-export default firebasemock.MockFirebaseSdk(
+export default new firebasemock.MockFirebaseSdk(
   // use null if your code does not use RTDB
   () => null,
   // () => mockauth,

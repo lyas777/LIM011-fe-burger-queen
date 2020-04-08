@@ -1,5 +1,5 @@
 
-const orders = {
+export const orders = {
   __collection__: {
     orders: {
       __doc__: {
