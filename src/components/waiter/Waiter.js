@@ -166,6 +166,9 @@ class Waiter extends React.Component {
     else {
       addOrder(orderData);
       this.setState({ show: false });
+      this.setState({ products: [] });
+      this.setState({ orders: [] });
+      this.setState({ total: 0 });
     }
   }
 
