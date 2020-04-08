@@ -10,6 +10,7 @@
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0"
   },
+  "homepage": "https://lyas777.github.io/LIM011-fe-burger-queen",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
