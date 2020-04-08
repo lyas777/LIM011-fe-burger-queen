@@ -3,26 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.27",
-    "@fortawesome/free-brands-svg-icons": "^5.12.1",
-    "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@fortawesome/react-fontawesome": "^0.1.9",
     "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
-    "babel-core": "^6.26.3",
-    "bootstrap": "^4.4.1",
-    "firebase": "^7.13.2",
-    "minimist": "^1.2.5",
     "react": "^16.13.0",
-    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.0",
-    "react-fontawesome": "^1.7.1",
     "react-scripts": "3.4.0"
   },
+  "homepage": "https://lyas777.github.io/burger-queen",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --verbose",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,22 +31,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@testing-library/dom": "^7.2.0",
-    "@testing-library/react": "^9.5.0",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0",
-    "firebase-mock": "^2.3.2",
-    "firestore-jest-mock": "^0.3.0",
-    "htmlhint": "^0.11.0",
-    "mock-cloud-firestore": "^0.12.0",
-    "react-test-renderer": "^16.13.1"
   }
 }
