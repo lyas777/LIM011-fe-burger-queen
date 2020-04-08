@@ -7,64 +7,50 @@ import { products } from '../../__mocks__/dataBase/products';
 
 console.log(products);
 
-it('prueba.', (done) => {
+it('Test firestore products.', (done) => {
    db.collection('products').get().then((doc) => doc.forEach((objt) => (console.log(objt)), done()));
 });
 
 
+it('Debería retornar el componente Waiter como un valor verdadero de acuerdo al id proporcionado.', () => {
+  const { getByTestId } = render(<Waiter />);
+  const component = getByTestId('waiter');
+
+  expect(component).toBeTruthy();
+});
 
 
+it('Debería ejecutarse la función clickTabs al dar click al botón Desayuno.', () => {
+  const component = renderer.create(<Waiter/>).getInstance();
+
+  component.clickTabs('sideDish');
+
+  // expect(component.state.products).toStrictEqual([{ nameProduct: 'Aros de cebolla'}]);
+
+  expect(component.state.products).toStrictEqual([]);
+});
 
 
-
-// it('prueba firestore', (done)=>{
-//   db.firestore.collection('products').add({
-//     category: 'breakfast',
-//     nameProduct: 'Sandwich de jamón y queso',
-//     offer: false,
-//     price: 10,
-//     type: null,
-//   }).then((doc) => {console.log(doc.data()); done()});
-
-// });
-
-// it('Debería retornar el componente Waiter como un valor verdadero de acuerdo al id proporcionado.', () => {
-//   const { getByTestId } = render(<Waiter />);
-//   const component = getByTestId('waiter');
-
-//   expect(component).toBeTruthy();
-// });
+// toBe(value): Comprueba el valor esperado. Utiliza === para la comprobarla igualdad
+// estricta.
 
 
-// /* it('Debería ejecutarse la función clickTabs al dar click al botón Desayuno.', () => {
-//   const component = renderer.create(<Waiter/>).getInstance();
+it('Debería cerrarse el modal al dar click al botón superior "x".', () => {
+  const component = renderer.create(<Waiter/>).getInstance();
 
-//   component.clickTabs('sideDish');
+  component.handleCloseModal();
 
-//   expect(component.state.products).toStrictEqual([{ nameProduct: 'Aros de cebolla'}]);
-// }); */
-
-
-// // toBe(value): Comprueba el valor esperado. Utiliza === para la comprobarla igualdad
-// // estricta.
+  expect(component.state.show).toBe(false);
+});
 
 
-// it('Debería cerrarse el modal al dar click al botón superior "x".', () => {
-//   const component = renderer.create(<Waiter/>).getInstance();
+it('No debería mostrar el modal cuando la lista de órdenes se encuentre vacía.', () => {
+  const component = renderer.create(<Waiter/>).getInstance();
 
-//   component.handleCloseModal();
+  component.clickSend();
 
-//   expect(component.state.show).toBe(false);
-// });
-
-
-// it('No debería mostrar el modal cuando la lista de órdenes se encuentre vacía.', () => {
-//   const component = renderer.create(<Waiter/>).getInstance();
-
-//   component.clickSend();
-
-//   expect(component.state.show).toBe(false);
-// });
+  expect(component.state.show).toBe(false);
+});
 
 // it('"clickTabs" debería leer la data de los productos según la categoría seleccionada', () =>{
 
@@ -95,37 +81,37 @@ it('prueba.', (done) => {
 
 // });
 
-// it('"ClickOffer" debería cambiar el estado de offers, orders y total.', () => {
-//   const component = renderer.create(<Waiter/>).getInstance();
+it('"ClickOffer" debería cambiar el estado de offers, orders y total.', () => {
+  const component = renderer.create(<Waiter/>).getInstance();
 
-//   const productoffer = {
-//     id: 'prod01',
-//     nameProduct: 'Hamburguesa de Pollo',
-//     price: 10,
-//     quantity: 1,
-//   };
-//   const offer = {
-//       id: 'offer01',
-//       nameOffer: 'Huevo',
-//       price: 1,
-//     };
-//   const orders = [{
-//     id: 'prod01offer01',
-//     nameProduct: 'Hamburguesa de Pollo '+ '+'+' Huevo',
-//     price: 11,
-//     quantity: 1,
-//     subTotal: 11,
-//   }];
+  const productoffer = {
+    id: 'prod01',
+    nameProduct: 'Hamburguesa de Pollo',
+    price: 10,
+    quantity: 1,
+  };
+  const offer = {
+      id: 'offer01',
+      nameOffer: 'Huevo',
+      price: 1,
+    };
+  const orders = [{
+    id: 'prod01offer01',
+    nameProduct: 'Hamburguesa de Pollo '+ '+'+' Huevo',
+    price: 11,
+    quantity: 1,
+    subTotal: 11,
+  }];
 
-//   component.clickOffer(productoffer,offer);
+  component.clickOffer(productoffer,offer);
 
-//   expect(component.state.orders).toStrictEqual(orders);
-//   expect(component.state.total).toBe(11);
-//   act(() => {
-//     const itemOrder = render(<itemOrder />)
-//   })
-//   expect(component).toBeTruthy();
-//   expect(component.state.offers).toStrictEqual([]);
+  expect(component.state.orders).toStrictEqual(orders);
+  expect(component.state.total).toBe(11);
+  act(() => {
+    const itemOrder = render(<itemOrder />)
+  })
+  expect(component).toBeTruthy();
+  expect(component.state.offers).toStrictEqual([]);
 
-// });
+});
 
